@@ -29,27 +29,15 @@ namespace Quicksilver2013
             }
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Quicksilver OS Alpha 1.0.0.8 as of 130119-1749\r\nCopyright (c) 2013");
+            Console.WriteLine("Quicksilver OS Alpha 1.0.0.17 as of 130128-2019\r\nCopyright (c) 2013");
             mouse.Initialize();
         }
         protected override void Run()
         {
-            if(didcommand) {
-                QuicksilverNEXT.Console.Write("Administrator# ");
-                QuicksilverNEXT.Console.Flush();
-                didcommand = false;
-                commandwpar = "";
-            }
-            ConsoleKeyInfo k = Console.ReadKey(true);
-            if (k.Key != ConsoleKey.Enter) {
-                commandwpar += k.KeyChar.ToString();
-            }
-            Console.Write(k.KeyChar);
-            if(k.Key == ConsoleKey.Enter) {
-                Parser.Parse(commandwpar);
-                didcommand = true;
-            }
-
+            QuicksilverNEXT.Console.Write("Administrator# ");
+            QuicksilverNEXT.Console.Flush();
+            commandwpar = Console.ReadLine();
+            Parser.Parse(commandwpar);
         }
     }
 }
