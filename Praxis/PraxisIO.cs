@@ -80,6 +80,7 @@ namespace Praxis.IO
             for (int i = 0; i < blocks.Length; i++)
                 blocks[i] = new byte[2048]
             ;
+            return new byte[2048];
         }
         /*public static void EditFile(string path, byte[] content)
         {

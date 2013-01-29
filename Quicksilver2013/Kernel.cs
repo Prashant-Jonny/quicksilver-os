@@ -61,7 +61,7 @@ namespace Quicksilver2013
                 }
                 if (!usableDriveFound)
                 {
-                    //Execute("fdisk");
+                    new fdisk().Execute(new string[1]);
                     Console.WriteLine("Please reboot (and do not forget to format the partition you detected!)");
                     while (true) ;
 

@@ -61,6 +61,7 @@
     <Compile Include="Console.cs" />
     <Compile Include="cpuid.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
