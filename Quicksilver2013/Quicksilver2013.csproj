@@ -65,6 +65,7 @@
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="VFS.cs" />
     <Compile Include="xl.cs" />
   </ItemGroup>
   <ItemGroup>
