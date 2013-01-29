@@ -43,6 +43,9 @@
     <Reference Include="Cosmos.IL2CPU.Plugs">
       <HintPath>..\..\..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.IL2CPU.Plugs.dll</HintPath>
     </Reference>
+    <Reference Include="GLNFSLib">
+      <HintPath>..\..\..\..\Downloads\GLNFSLib\GLNFS_v1.1\GLNFSLib.dll</HintPath>
+    </Reference>
     <Reference Include="QuicksilverNEXT">
       <HintPath>..\..\QuicksilverNEXT\QuicksilverNEXT\bin\Release\QuicksilverNEXT.dll</HintPath>
     </Reference>
@@ -58,10 +61,15 @@
     <Compile Include="Console.cs" />
     <Compile Include="cpuid.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="filesystem.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="xl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LICENSE.txt" />
+    <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
