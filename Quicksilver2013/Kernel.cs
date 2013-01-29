@@ -29,7 +29,7 @@ namespace Quicksilver2013
             }
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Quicksilver OS Alpha 1.0.0.17 as of 130128-2019\r\nCopyright (c) 2013");
+            Console.WriteLine("Quicksilver OS Alpha 1.0.0.17 as of 130128-2030\r\nCopyright (c) 2013");
             mouse.Initialize();
         }
         protected override void Run()

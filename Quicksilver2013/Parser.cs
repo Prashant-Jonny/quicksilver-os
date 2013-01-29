@@ -117,7 +117,7 @@ namespace Quicksilver2013
         }
         public static void cpuid(string[] args) {
             var pi = Quicksilver2013.cpuid.pi;
-            Console.WriteLine((pi.CoreCount + 1).ToString() + "core at " + pi.MaxSpeed + "MHz");
+            Console.WriteLine(pi.MaxSpeed + " MHz");
         }
         public static void help(string[] args)
         {
