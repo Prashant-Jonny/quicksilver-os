@@ -80,7 +80,7 @@ namespace Praxis
             if (BitConverter.ToInt32(s0, 32) != 0)
                 AddEntrySecondary(sector, hash, dir, BitConverter.ToInt32(s0, 32));
             else { if (entries_in_sector > 222) {
-                uint nb = nextblock();
+                int nb = nextblock();
                 inextblock();
                 byte[] block = part.Read((int)nb);
                 MemBlocks mb = new MemBlocks(block);
@@ -113,7 +113,7 @@ namespace Praxis
             if (BitConverter.ToInt32(s0, 32) != 0)
                 AddEntrySecondary(sector, hash, dir, BitConverter.ToInt32(s0, 32));
             else { if (entries_in_sector >= 227) {
-                    uint nb = nextblock();
+                    int nb = nextblock();
                     inextblock();
             } }
         }
@@ -123,11 +123,9 @@ namespace Praxis
             ms.Write(BitConverter.GetBytes(entries_in_sector), 42, 4); //number of used entrys
             part.Write(0, buffer);
         }
-        public uint nextblock()
+        public int nextblock()
         {
-            byte[] block0 = part.Read(0);
-            uint rtrn = BitConverter.ToUInt32(block0, 38);
-            return rtrn;
+            return next_block;
         }
         public void inextblock()
         {
@@ -135,6 +133,7 @@ namespace Praxis
             MemBlocks mb = new MemBlocks(block0);
             byte[] nb = BitConverter.GetBytes(nextblock() + 1);
             mb.Write(nb, 38, 4);
+            next_block++;
         }
         public string Label()
         {

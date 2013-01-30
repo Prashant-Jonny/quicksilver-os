@@ -17,10 +17,10 @@ namespace Praxis.IO
         public static void Create(string path, byte[] content)
         {
             string[] paths = path.Split('/');
-            PraxisPartition p = PraxisPartitionTable.Get(paths[0]);
+            PraxisPartition p = PraxisPartitionTable.Get(paths[1]);
             if (p != null) {
-                uint sectors = p.nextblock();
-                for (int i = 1; i < paths.Length; i++) {
+                int sectors = p.nextblock();
+                for (int i = 2; i < paths.Length; i++) {
                     if (paths[i] == "" && i != paths.Length - 1) {
 
                     }
@@ -39,6 +39,21 @@ namespace Praxis.IO
                 num_of_sectors++;
             }
             byte[][] blocks = new byte[num_of_sectors + 1][];
+            int[] sectors = new int[num_of_sectors + 1];
+            for(int i = 0; i < blocks.Length; i++) blocks[i] = new byte[2048];
+            int x = 0;
+            //first block
+            sectors[0] = prp.nextblock();
+            var mb = new MemBlocks(blocks[0]);
+            mb.Write(Encoding.UTF8.GetBytes(name), 0, 64);
+            mb.Write(BitConverter.GetBytes(content.Length), 64, 4);
+            mb.Write(BitConverter.GetBytes(sectors[0]), 68, 4);
+            prp.inextblock();
+            for (int i = 72; i < 2048; i++) { blocks[0][i] = content[x]; if (x >= content.Length - 1) break; x++; }
+            if (num_of_sectors > 0) for (int i = 1; i < blocks.Length; i = Math.Min(blocks.Length - 1, i + 1)) { sectors[i] = prp.nextblock(); mb = new MemBlocks(blocks[i]); mb.Write(BitConverter.GetBytes(sectors[i]), 0, 4); for (int j = 4; j < blocks[i].Length; j++) { blocks[i][j] = content[x]; x++; if (x >= content.Length - 1) break; } if (x >= content.Length - 1) break; prp.inextblock(); }
+            for (int i = 0; i < blocks.Length; i++ ) if(sectors[i] != 0) prp.part.Write(sectors[i], blocks[i]);
+            #region garbagecode
+            /*byte[][] blocks = new byte[num_of_sectors + 2][];
             for (int i = 0; i < blocks.Length; i++)
                 blocks[i] = new byte[2048]
             ;
@@ -52,7 +67,7 @@ namespace Praxis.IO
             ms.Write(temp, 72, 1976);
             prp.part.Write(block, blocks[0]);
             prp.inextblock();
-            for (int i = 0; i < num_of_sectors; i++)
+            for (int i = 0; i <= num_of_sectors; i++)
             {
                 ms = new MemBlocks(blocks[i + 1]);
                 int old_next = (int)prp.nextblock();
@@ -63,7 +78,8 @@ namespace Praxis.IO
                 if (i == num_of_sectors - 1) ms.Write(BitConverter.GetBytes(0), 0, 4);
                 else ms.Write(BitConverter.GetBytes(prp.nextblock()), 0, 4);
                 prp.part.Write(old_next, tmp);
-            }
+            }*/
+            #endregion
             //1976 is the bytes in the first sector. 2044 in the later ones.
         }
         private static byte[] ReadFile(string name, Int32 block, PraxisPartition prp)
@@ -109,19 +125,19 @@ namespace Praxis.IO
         }*/
         public static byte[] Read(string path) {
             string[] paths = path.Split('/');
-            PraxisPartition p = PraxisPartitionTable.Get(paths[0]);
+            PraxisPartition p = PraxisPartitionTable.Get(paths[1]);
             if (p != null) {
                 uint sectors = 0;
                 for (int i = 1; i < paths.Length; i++) {
                     if (paths[i] == "" && i != paths.Length - 1) {
 
                     }
-                    if (i == paths.Length - 1 && p.doesHaveFile(paths[1].GetHashCode())) {
-                        return ReadFile(paths[1], p.sectorOfFile(paths[1].GetHashCode()), p);
+                    if (i == paths.Length - 1 && p.doesHaveFile(paths[2].GetHashCode())) {
+                        return ReadFile(paths[1], p.sectorOfFile(paths[2].GetHashCode()), p);
                     }
                 }
             }
-            return null;
+            return new byte[1];
         }
         public static byte[] get(string partition, int sector)
         {
