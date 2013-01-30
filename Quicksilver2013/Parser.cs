@@ -20,6 +20,7 @@ namespace Quicksilver2013
             add(new commandBase("div", new commandBase.command(commanddel.div)));
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
             add(new commandBase("cd", new commandBase.command(commanddel.cd)));
+            add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -117,12 +118,15 @@ namespace Quicksilver2013
         {
             Console.WriteLine((int.Parse(args[1]) / int.Parse(args[2])));
         }
+        public static void meminfo(string[] args)
+        {
+            Console.WriteLine((Cosmos.Core.CPU.GetAmountOfRAM() * 1024 * 1024) + " bytes of RAMv");
+        }
         public static void cd(string[] args) {
             try
             {
                 if (args[1][0] == '/') Kernel.cd = args[1];
-                else if (Kernel.FileSystem.ListDirectories(Kernel.cd).Contains(args[1])) Kernel.cd = GruntyOS.String.Util.cleanName(Kernel.cd) + "/" + args[1];
-                else throw new Exception();
+                if (args[1][0] != '/')/* if (Kernel.FileSystem.ListDirectories(Kernel.cd).Contains(args[1]))*/ Kernel.cd = GruntyOS.String.Util.cleanName(Kernel.cd) + "/" + args[1];
             }
             catch
             {
@@ -138,7 +142,7 @@ namespace Quicksilver2013
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.8\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0.18\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);
