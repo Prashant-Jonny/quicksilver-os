@@ -45,8 +45,8 @@ namespace Praxis.IO
             var ms = new MemBlocks(blocks[0]);
             ms.Write(Encoding.UTF8.GetBytes(name), 0, 64);
             ms.Write(BitConverter.GetBytes(content.Length), 64, 4);
-            if(num_of_sectors == 0) ms.Write(BitConverter.GetBytes(0), 68, 4);
-            else ms.Write(BitConverter.GetBytes(prp.nextblock()), 68, 4);
+            if (num_of_sectors == 0) ms.Write(BitConverter.GetBytes(0), 68, 4);
+            else { prp.inextblock(); ms.Write(BitConverter.GetBytes(prp.nextblock()), 68, 4); }
             byte[] temp = new byte[1976];
             for (int i = 0; i < Math.Min(1976, content.Length); i++) temp[i] = content[i];
             ms.Write(temp, 72, 1976);
@@ -77,10 +77,18 @@ namespace Praxis.IO
                 num_of_sectors++;
             }
             byte[][] blocks = new byte[num_of_sectors + 1][];
+            byte[] lasttime = new byte[2048];
+            new MemBlocks(lasttime).Write(BitConverter.GetBytes(block), 68, 4);
             for (int i = 0; i < blocks.Length; i++)
-                blocks[i] = new byte[2048]
-            ;
-            return new byte[2048];
+            {
+                blocks[i] = prp.part.Read(BitConverter.ToInt32(lasttime, 68));
+                lasttime = blocks[i];
+            }
+            byte[] returns = new byte[length];
+            int x = 0;
+            for (int i = 72; i < blocks[0].Length; i++) { returns[x] = blocks[0][i]; x++; if (x >= length) break; }
+            if (num_of_sectors > 0) for (int i = 1; i < blocks.Length; i++) { for (int j = 4; j < blocks[i].Length; j++) { returns[x] = blocks[i][j]; x++; if (x >= length) break; } if (x >= length) break; }
+            return returns;
         }
         /*public static void EditFile(string path, byte[] content)
         {

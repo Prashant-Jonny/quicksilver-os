@@ -13,8 +13,8 @@ C:\Users\John\Documents\Visual Studio 2010\Projects\Praxis\Praxis\obj\x86\Releas
 C:\Users\John\Documents\Visual Studio 2010\Projects\Praxis\Praxis\obj\x86\Release\Praxis.pdb
 C:\Users\John\Documents\Visual Studio 2010\Projects\Praxis\Praxis\bin\Release\Praxis.exe
 C:\Users\John\Documents\Visual Studio 2010\Projects\Praxis\Praxis\bin\Release\Praxis.pdb
-C:\Users\John\Documents\GitHub\quicksilver-os\Praxis\obj\x86\Release\Praxis.exe
-C:\Users\John\Documents\GitHub\quicksilver-os\Praxis\bin\Release\Praxis.exe.config
-C:\Users\John\Documents\GitHub\quicksilver-os\Praxis\bin\Release\Praxis.exe
-C:\Users\John\Documents\GitHub\quicksilver-os\Praxis\bin\Release\Praxis.pdb
-C:\Users\John\Documents\GitHub\quicksilver-os\Praxis\obj\x86\Release\Praxis.pdb
+G:\Praxis\Praxis\bin\Release\Praxis.exe.config
+G:\Praxis\Praxis\obj\x86\Release\Praxis.exe
+G:\Praxis\Praxis\obj\x86\Release\Praxis.pdb
+G:\Praxis\Praxis\bin\Release\Praxis.exe
+G:\Praxis\Praxis\bin\Release\Praxis.pdb

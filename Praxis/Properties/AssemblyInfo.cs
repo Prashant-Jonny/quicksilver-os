@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Praxis")]
-[assembly: AssemblyDescription("Quicksilver FS")]
-[assembly: AssemblyConfiguration("Windows")]
+[assembly: AssemblyTitle("Praxis 13.01.27")]
+[assembly: AssemblyDescription("Praxis Filesystem")]
+[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Quicksilver")]
 [assembly: AssemblyProduct("Praxis")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]

@@ -17,7 +17,7 @@ namespace Praxis
             ms.Write(BitConverter.GetBytes(0x00000000), 32, 4);
             ms.Write(new byte[] { 0xF0, 0x00 }, 36, 2);
             ms.Write(BitConverter.GetBytes(1), 38, 4); //current used sectors
-            ms.Write(BitConverter.GetBytes(1), 42, 4); //number of used entrys
+            ms.Write(BitConverter.GetBytes(0), 42, 4); //number of used entrys
             //format for files/directory is byte directory,int hash,int block
             p.Write(0, buffer);
         }
@@ -26,11 +26,13 @@ namespace Praxis
     {
         public Partition part;
         private int entries_in_sector = 0;
+        private int next_block = 1;
         public PraxisPartition(Partition par0) {
             byte[] block0 = par0.Read(0);
             byte flags0 = block0[36];
             if ((flags0 & 0xF0) == 0xF0) {
                 part = par0;
+                entries_in_sector = BitConverter.ToInt32(block0, 42);
                 entries_in_sector = BitConverter.ToInt32(block0, 42);
             }
             else throw new Exception("Please format your partition with Praxis");
@@ -77,7 +79,7 @@ namespace Praxis
             byte[] s0 = part.Read(0);
             if (BitConverter.ToInt32(s0, 32) != 0)
                 AddEntrySecondary(sector, hash, dir, BitConverter.ToInt32(s0, 32));
-            else { if (entries_in_sector >= 222) {
+            else { if (entries_in_sector > 222) {
                 uint nb = nextblock();
                 inextblock();
                 byte[] block = part.Read((int)nb);
@@ -87,12 +89,13 @@ namespace Praxis
                 mb.Write(new byte[] { dir }, 4 + (9 * entries_in_sector), 1);
                 mb.Write(BitConverter.GetBytes(hash), 5 + (9 * entries_in_sector), 4);
                 mb.Write(BitConverter.GetBytes(sector), 9 + (9 * entries_in_sector), 4);
-                entries_in_sector = 1;
+                entries_in_sector = 0;
                 part.Write((int)nb, block);
                 block = part.Read(0);
                 mb = new MemBlocks(block);
                 mb.Write(BitConverter.GetBytes(nb), 32, 4);
                 part.Write(0, block);
+                entries_in_sector++;
             } else {
                 byte[] block = part.Read(0);
                 MemBlocks mb = new MemBlocks(block);
@@ -100,7 +103,6 @@ namespace Praxis
                 mb.Write(new byte[] { dir }, 46 + (9 * entries_in_sector), 1);
                 mb.Write(BitConverter.GetBytes(hash), 47 + (9 * entries_in_sector), 4);
                 mb.Write(BitConverter.GetBytes(sector), 51 + (9 * entries_in_sector), 4);
-                entries_in_sector = 1;
                 part.Write(0, block);
                 entries_in_sector++;
             } }
@@ -116,7 +118,7 @@ namespace Praxis
             } }
         }
         public void close() {
-            byte[] buffer = new byte[2048];
+            byte[] buffer = part.Read(0);
             var ms = new MemBlocks(buffer);
             ms.Write(BitConverter.GetBytes(entries_in_sector), 42, 4); //number of used entrys
             part.Write(0, buffer);
@@ -124,10 +126,8 @@ namespace Praxis
         public uint nextblock()
         {
             byte[] block0 = part.Read(0);
-            MemBlocks mb = new MemBlocks(block0);
-            byte[] nb = new byte[4];
-            mb.Read(ref nb, 38, 4);
-            return BitConverter.ToUInt32(nb, 0);
+            uint rtrn = BitConverter.ToUInt32(block0, 38);
+            return rtrn;
         }
         public void inextblock()
         {
