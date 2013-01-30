@@ -16,7 +16,7 @@ namespace Quicksilver2013
         linux, // /usr
         windows // C:\Users
     }
-    public class GLNFS : filesystem
+    class GLNFS : filesystem
     {
         public override void write(string path, byte[] content)
         {

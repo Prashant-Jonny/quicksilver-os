@@ -19,6 +19,7 @@ namespace Quicksilver2013
             add(new commandBase("mul", new commandBase.command(commanddel.mul)));
             add(new commandBase("div", new commandBase.command(commanddel.div)));
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
+            add(new commandBase("cd", new commandBase.command(commanddel.cd)));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -27,6 +28,7 @@ namespace Quicksilver2013
             commands[5].sethelp("mul: Multiplies two numbers together\r\nUsage: mul @n @n");
             commands[6].sethelp("div: Divides one number by another\r\nUsage: div @n @n");
             commands[7].sethelp("cpuid: Gives info about the cpu\r\nUsage: cpuid");
+            commands[8].sethelp("cd: Changes the current directory\r\nUsage: cd @directory, cd @path");
         }
         public static void add(commandBase com) {
             commands[icommand] = com;
@@ -115,14 +117,28 @@ namespace Quicksilver2013
         {
             Console.WriteLine((int.Parse(args[1]) / int.Parse(args[2])));
         }
+        public static void cd(string[] args) {
+            try
+            {
+                if (args[1][0] == '/') Kernel.cd = args[1];
+                else if (Kernel.FileSystem.ListDirectories(Kernel.cd).Contains(args[1])) Kernel.cd = GruntyOS.String.Util.cleanName(Kernel.cd) + "/" + args[1];
+                else throw new Exception();
+            }
+            catch
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Invalid Args");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
         public static void cpuid(string[] args) {
             var pi = Quicksilver2013.cpuid.pi;
-            Console.WriteLine(pi.MaxSpeed + " MHz");
+            Console.WriteLine(pi.CoreCount + " cores at " + pi.MaxSpeed + " MHz");
         }
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.8\r\nCommands: echo, try, add, sub, mul, div, help, cpuid.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0.8\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);

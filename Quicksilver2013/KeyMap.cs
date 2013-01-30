@@ -11,7 +11,7 @@ namespace Quicksilver2013
         string name;
         List<char> keys = new List<char> { '\0' };
         public static byte[] getBytes(KeyMap par0, string par1) {
-
+            return new byte[1];
         }
         public static string getString(KeyMap par0, byte[] par1) {
             string var0 = "";

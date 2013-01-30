@@ -47,7 +47,7 @@ namespace Quicksilver2013
         }
        
         BinaryWriter bw = new BinaryWriter(new MemoryStream(512));
-        public override void Execute(string[] args)
+        public void Execute(string[] args)
         {
             string devn = "/dev/sda";
             AtaPio bd = (AtaPio)Devices.getDevice(devn);
