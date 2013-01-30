@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quicksilver2013", "Quicksilver2013\Quicksilver2013.csproj", "{FABA7552-2242-413F-8C05-EA206B057F55}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9221A33C-8A12-4D1C-889C-DCAAEF8022D7} = {9221A33C-8A12-4D1C-889C-DCAAEF8022D7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Praxis", "Praxis\Praxis.csproj", "{9221A33C-8A12-4D1C-889C-DCAAEF8022D7}"
 EndProject
