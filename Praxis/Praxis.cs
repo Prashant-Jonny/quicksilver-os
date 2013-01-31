@@ -41,7 +41,7 @@ namespace Praxis
             byte[] block0 = part.Read(0);
             MemBlocks mb = new MemBlocks(block0);
             for (int index = 46; index < 2048; index += 9) {
-                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToUInt32(block0, index + 1) == hash) {
+                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToUInt32(block0, index + 5) == hash) {
                     return true;
                 }
             }
@@ -54,7 +54,7 @@ namespace Praxis
             MemBlocks mb = new MemBlocks(block0);
             for (int index = 46; index < 2048; index += 9)
             {
-                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToUInt32(block0, index + 1) == hash)
+                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToInt32(block0, index + 1) == hash)
                 {
                     return BitConverter.ToInt32(block0, index + 5);
                 }
@@ -67,7 +67,7 @@ namespace Praxis
             byte[] block0 = part.Read(0);
             MemBlocks mb = new MemBlocks(block0);
             for (int index = 46; index < 2048; index += 9) {
-                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToUInt32(block0, index + 1) == hash) {
+                if (mb.Read(index, 1)[0] == 0xF0 && BitConverter.ToUInt32(block0, index + 5) == hash) {
                     return true;
                 }
             }

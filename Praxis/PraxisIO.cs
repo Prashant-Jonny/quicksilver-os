@@ -25,8 +25,8 @@ namespace Praxis.IO
 
                     }
                     if(i == paths.Length - 1) {
-                        p.AddEntry((int)sectors, paths[i].GetHashCode(), 0xF0);
-                        WriteFile(paths[1], (int)sectors, content, p);
+                        p.AddEntry((int)sectors, paths[2].GetHashCode(), 0xF0);
+                        WriteFile(paths[2], (int)sectors, content, p);
                     }
                 }
             }
@@ -127,13 +127,14 @@ namespace Praxis.IO
             string[] paths = path.Split('/');
             PraxisPartition p = PraxisPartitionTable.Get(paths[1]);
             if (p != null) {
-                uint sectors = 0;
+                int sectors = 0;
                 for (int i = 1; i < paths.Length; i++) {
                     if (paths[i] == "" && i != paths.Length - 1) {
 
                     }
-                    if (i == paths.Length - 1 && p.doesHaveFile(paths[2].GetHashCode())) {
-                        return ReadFile(paths[1], p.sectorOfFile(paths[2].GetHashCode()), p);
+                    if (i == paths.Length - 1) {// && p.doesHaveFile(paths[2].GetHashCode())) {
+                        sectors = p.sectorOfFile(paths[2].GetHashCode());
+                        return ReadFile(paths[2], sectors, p);
                     }
                 }
             }
