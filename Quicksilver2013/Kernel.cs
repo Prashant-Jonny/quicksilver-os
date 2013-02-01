@@ -71,7 +71,7 @@ namespace Quicksilver2013
             Praxis.PraxisPartitionTable.Add(prax);
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.20 as of 130120-2021\r\nCopyright (c) 2013");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.20 as of 130120-2000\r\nCopyright (c) 2013");
             Console.Write("Please Pick a username: ");
             UserService.user = Console.ReadLine();
             Console.Clear();
