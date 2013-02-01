@@ -13,11 +13,11 @@ namespace Quicksilver2013
         string commandwpar = "";
         //public static string cd = "/";
         //public static GDOS.VirtualFileSystem FileSystem;
-        public static Praxis.Emulator.VDisk vd = Praxis.Emulator.VDisk.Create(4096);
-        public static Praxis.Emulator.PartitionTable pt;
-        public static Praxis.Emulator.Partition part;
-        public static Praxis.PraxisPartition prax;
-        static string cd = "/system";
+        Praxis.Emulator.VDisk vd = Praxis.Emulator.VDisk.Create(4096);
+        Praxis.Emulator.PartitionTable pt;
+        Praxis.Emulator.Partition part;
+        Praxis.PraxisPartition prax;
+        static string cd = "/system/";
         Cosmos.Hardware.TextScreen ts = new Cosmos.Hardware.TextScreen();
         Cosmos.Hardware.Mouse mouse = new Cosmos.Hardware.Mouse();
         protected override void BeforeRun()
@@ -62,14 +62,14 @@ namespace Quicksilver2013
             */
             #endregion
             //quicksilver praxis
-            pt = new PraxisEmu.PartitionTable(vd);
-            part = PraxisEmu.Partitioner.Create(pt, 4096);
+            pt = new Praxis.Emulator.PartitionTable(vd);
+            part = Praxis.Emulator.Partitioner.Create(pt, 4096);
             Praxis.PraxisFormatter.format(part, "system");
-            prax = new PraxisMain.PraxisPartition(part);
+            prax = new Praxis.PraxisPartition(part);
             Praxis.PraxisPartitionTable.Add(prax);
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.20 as of 130120-2000\r\nCopyright (c) 2013");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.21 as of 130201-2000\r\nCopyright (c) 2013");
             Console.Write("Please pick a username: ");
             UserService.user = Console.ReadLine();
             Console.Clear();

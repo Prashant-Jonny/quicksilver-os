@@ -69,12 +69,20 @@
     <Compile Include="Console.cs" />
     <Compile Include="cpuid.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Executable\Com.cs" />
+    <Compile Include="Executable\mz-exe.cs" />
+    <Compile Include="Executable\pe-exe.cs" />
     <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
     <Compile Include="FileXT.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="Praxis\MemBlocks.cs" />
+    <Compile Include="Praxis\Praxis.cs" />
+    <Compile Include="Praxis\PraxisIO.cs" />
+    <Compile Include="Praxis\Program.cs" />
+    <Compile Include="Praxis\VDisk.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="VFS.cs" />
     <Compile Include="xl.cs" />
@@ -83,12 +91,7 @@
     <Content Include="LICENSE.txt" />
     <Content Include="README.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Praxis\Praxis.csproj">
-      <Project>{9221A33C-8A12-4D1C-889C-DCAAEF8022D7}</Project>
-      <Name>Praxis</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

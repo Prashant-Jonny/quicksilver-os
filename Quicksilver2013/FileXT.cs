@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Praxis.Emulator
+namespace Quicksilver2013
 {
     class FileXT
     {

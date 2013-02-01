@@ -123,6 +123,10 @@ namespace Quicksilver2013
         {
             Console.WriteLine((Cosmos.Core.CPU.GetAmountOfRAM() * 1024 * 1024) + " bytes of RAMv");
         }
+        public static void files(string[] args)
+        {
+            FileXT.file(args[1]);
+        }
         public static void cd(string[] args) {
             try
             {
