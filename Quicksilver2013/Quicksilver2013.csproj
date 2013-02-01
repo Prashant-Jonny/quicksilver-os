@@ -71,6 +71,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
+    <Compile Include="FileXT.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="Parser.cs" />
