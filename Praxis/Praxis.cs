@@ -7,7 +7,7 @@ using Praxis.Emulator;
 
 namespace Praxis
 {
-    class PraxisFormatter
+    public class PraxisFormatter
     {
         public static void format(Partition p, string label)
         {
@@ -22,7 +22,7 @@ namespace Praxis
             p.Write(0, buffer);
         }
     }
-    class PraxisPartition
+    public class PraxisPartition
     {
         public Partition part;
         private int entries_in_sector = 0;
@@ -146,7 +146,7 @@ namespace Praxis
             return ret.Replace(((char)0).ToString(), "");
         }
     }
-    class PraxisPartitionTable
+    public class PraxisPartitionTable
     {
         static PraxisPartition[] table = new PraxisPartition[4];
         static int[] hashes = new int[4];

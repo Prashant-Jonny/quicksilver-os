@@ -19,7 +19,7 @@ namespace Praxis.Examples
             vd = VDisk.Create(1024);
             pt = new PartitionTable(vd);
             //initializes partition
-            part = Partitioner.Create(pt);
+            part = Partitioner.Create(pt, 1024);
             PraxisFormatter.format(part, "system");
             //formats
             praxpart = new PraxisPartition(part);

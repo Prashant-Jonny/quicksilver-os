@@ -4,15 +4,22 @@ using System.Text;
 using Sys = Cosmos.System;
 using x86 = Cosmos.Assembler.x86;
 using SMBIOS = Cosmos.Hardware.SMBIOS;
+using PraxisMain = Praxis;
+using PraxisEmu = Praxis.Emulator;
+using PraxisIO = Praxis.IO;
 namespace Quicksilver2013
 {
     public class Kernel : Sys.Kernel
     {
         public bool didcommand = true;
-        string topline = "";
         string commandwpar = "";
-        public static string cd = "/";
-        public static GDOS.VirtualFileSystem FileSystem;
+        //public static string cd = "/";
+        //public static GDOS.VirtualFileSystem FileSystem;
+        PraxisEmu.VDisk vd = PraxisEmu.VDisk.Create(4096);
+        PraxisEmu.PartitionTable pt;
+        PraxisEmu.Partition part;
+        Praxis.PraxisPartition prax;
+        static string cd = "/system";
         Cosmos.Hardware.TextScreen ts = new Cosmos.Hardware.TextScreen();
         Cosmos.Hardware.Mouse mouse = new Cosmos.Hardware.Mouse();
         protected override void BeforeRun()
@@ -56,16 +63,22 @@ namespace Quicksilver2013
             }
             */
             #endregion
+            //quicksilver praxis
+            pt = new PraxisEmu.PartitionTable(vd);
+            part = PraxisEmu.Partitioner.Create(pt, 4096);
+            Praxis.PraxisFormatter.format(part, "system");
+            prax = new PraxisMain.PraxisPartition(part);
+            Praxis.PraxisPartitionTable.Add(prax);
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Quicksilver OS Alpha 1.0.0.19 as of 130130-2010\r\nCopyright (c) 2013");
-            Console.Write("Welcome to Quicksilver OS. Please Pick a username: ");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.20 as of 130120-2021\r\nCopyright (c) 2013");
+            Console.Write("Please Pick a username: ");
             UserService.user = Console.ReadLine();
             Console.Clear();
         }
         protected override void Run()
         {
-            QuicksilverNEXT.Console.Write(UserService.user + "@" + cd + "# ");
+            QuicksilverNEXT.Console.Write(UserService.user + "@" + cd  + "# ");
             QuicksilverNEXT.Console.Flush();
             commandwpar = Console.ReadLine();
             Parser.Parse(commandwpar);

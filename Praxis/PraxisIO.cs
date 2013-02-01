@@ -7,7 +7,7 @@ using Praxis.Emulator;
 
 namespace Praxis.IO
 {
-    class File
+    public class File
     {
         /// <summary>
         /// Creates a new file at the specified path

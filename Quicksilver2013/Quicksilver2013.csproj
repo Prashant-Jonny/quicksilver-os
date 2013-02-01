@@ -82,6 +82,12 @@
     <Content Include="LICENSE.txt" />
     <Content Include="README.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Praxis\Praxis.csproj">
+      <Project>{9221A33C-8A12-4D1C-889C-DCAAEF8022D7}</Project>
+      <Name>Praxis</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

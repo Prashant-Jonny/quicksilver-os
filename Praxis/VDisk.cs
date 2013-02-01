@@ -4,7 +4,7 @@ using System.Linq;
 using System.Xml;
 namespace Praxis.Emulator
 {
-    struct VDisk
+    public struct VDisk
     {
         byte[] v_cache;
         MemBlocks ms;
@@ -34,15 +34,16 @@ namespace Praxis.Emulator
             ms.Read(ref buffer, block * 2048, block_size);
         }
     }
-    class Partitioner
+    public class Partitioner
     {
-        public static Partition Create(PartitionTable pt)
+        static int offset = 0;
+        public static Partition Create(PartitionTable pt, int size)
         {
-            pt.part_num++;
-            return new Partition(pt.vd, (pt.part_num - 1) * 256);
+            offset += size;
+            return new Partition(pt.vd, offset);
         }
     }
-    class PartitionTable
+    public class PartitionTable
     {
         public VDisk vd;
         public int part_num = 0;
@@ -51,7 +52,7 @@ namespace Praxis.Emulator
             vd = par0;
         }
     }
-    class Partition
+    public class Partition
     {
         VDisk Parent; int Offset;
         public Partition(VDisk vd, int offset)

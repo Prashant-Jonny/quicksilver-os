@@ -19,7 +19,7 @@ namespace Quicksilver2013
             add(new commandBase("mul", new commandBase.command(commanddel.mul)));
             add(new commandBase("div", new commandBase.command(commanddel.div)));
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
-            add(new commandBase("cd", new commandBase.command(commanddel.cd)));
+            //add(new commandBase("cd", new commandBase.command(commanddel.cd)));
             add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
@@ -29,7 +29,8 @@ namespace Quicksilver2013
             commands[5].sethelp("mul: Multiplies two numbers together\r\nUsage: mul @n @n");
             commands[6].sethelp("div: Divides one number by another\r\nUsage: div @n @n");
             commands[7].sethelp("cpuid: Gives info about the cpu\r\nUsage: cpuid");
-            commands[8].sethelp("cd: Changes the current directory\r\nUsage: cd @directory, cd @path");
+            //commands[8].sethelp("cd: Changes the current directory\r\nUsage: cd @directory, cd @path");
+            commands[8].sethelp("sysinfo: Gives info about the system\r\nUsage: sysinfo");
         }
         public static void add(commandBase com) {
             commands[icommand] = com;
@@ -125,8 +126,8 @@ namespace Quicksilver2013
         public static void cd(string[] args) {
             try
             {
-                if (args[1][0] == '/') Kernel.cd = args[1];
-                if (args[1][0] != '/')/* if (Kernel.FileSystem.ListDirectories(Kernel.cd).Contains(args[1]))*/ Kernel.cd = GruntyOS.String.Util.cleanName(Kernel.cd) + "/" + args[1];
+                //if (args[1][0] == '/') Kernel.cd = args[1];
+                //if (args[1][0] != '/')/* if (Kernel.FileSystem.ListDirectories(Kernel.cd).Contains(args[1]))*/ Kernel.cd = GruntyOS.String.Util.cleanName(Kernel.cd) + "/" + args[1];
             }
             catch
             {
@@ -142,7 +143,7 @@ namespace Quicksilver2013
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.19 as of 130130-2010\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0.19\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);

@@ -85,3 +85,5 @@ C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\raw.pd
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver2013.csprojResolveAssemblyReference.cache
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.pdb
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Praxis.exe
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Praxis.pdb
