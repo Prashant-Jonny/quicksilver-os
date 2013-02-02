@@ -13,10 +13,10 @@ namespace Quicksilver2013
         string commandwpar = "";
         //public static string cd = "/";
         //public static GDOS.VirtualFileSystem FileSystem;
-        Praxis.Emulator.VDisk vd = Praxis.Emulator.VDisk.Create(4096);
-        Praxis.Emulator.PartitionTable pt;
-        Praxis.Emulator.Partition part;
-        Praxis.PraxisPartition prax;
+        //Praxis.Emulator.VDisk vd = Praxis.Emulator.VDisk.Create(4096);
+        //Praxis.Emulator.PartitionTable pt;
+        //Praxis.Emulator.Partition part;
+        //Praxis.PraxisPartition prax;
         static string cd = "/system/";
         Cosmos.Hardware.TextScreen ts = new Cosmos.Hardware.TextScreen();
         Cosmos.Hardware.Mouse mouse = new Cosmos.Hardware.Mouse();
@@ -62,11 +62,11 @@ namespace Quicksilver2013
             */
             #endregion
             //quicksilver praxis
-            pt = new Praxis.Emulator.PartitionTable(vd);
-            part = Praxis.Emulator.Partitioner.Create(pt, 4096);
+            //pt = new Praxis.Emulator.PartitionTable(vd);
+            //part = Praxis.Emulator.Partitioner.Create(pt, 4096);
             //Praxis.PraxisFormatter.format(part, "system");
-            prax = new Praxis.PraxisPartition(part);
-            Praxis.PraxisPartitionTable.Add(prax);
+            //prax = new Praxis.PraxisPartition(part);
+            //Praxis.PraxisPartitionTable.Add(prax);
             Parser.Init();
             mouse.Initialize();
             Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.22 as of 130202-0900\r\nCopyright (c) 2013");
