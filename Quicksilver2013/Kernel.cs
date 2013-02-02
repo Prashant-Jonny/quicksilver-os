@@ -64,15 +64,17 @@ namespace Quicksilver2013
             //quicksilver praxis
             pt = new Praxis.Emulator.PartitionTable(vd);
             part = Praxis.Emulator.Partitioner.Create(pt, 4096);
-            Praxis.PraxisFormatter.format(part, "system");
+            //Praxis.PraxisFormatter.format(part, "system");
             prax = new Praxis.PraxisPartition(part);
             Praxis.PraxisPartitionTable.Add(prax);
             Parser.Init();
             mouse.Initialize();
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.21 as of 130201-2000\r\nCopyright (c) 2013");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.22 as of 130202-0900\r\nCopyright (c) 2013");
             Console.Write("Please pick a username: ");
             UserService.user = Console.ReadLine();
             Console.Clear();
+            //Praxis.IO.File.Create("/system/hello.com", Quicksilver2013.Files.Exes.hello);
+
         }
         protected override void Run()
         {

@@ -121,7 +121,7 @@ namespace Quicksilver2013
         }
         public static void meminfo(string[] args)
         {
-            Console.WriteLine((Cosmos.Core.CPU.GetAmountOfRAM() * 1024 * 1024) + " bytes of RAMv");
+            Console.WriteLine((Cosmos.Core.CPU.GetAmountOfRAM() * 1024 * 1024) + " bytes of RAM");
         }
         public static void files(string[] args)
         {

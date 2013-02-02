@@ -7,8 +7,8 @@ namespace Quicksilver2013
 {
     class FileXT
     {
-        private static string[] exts = ".txt".Split(' ');
-        private static string[] programs = ".".Split(' ');
+        private static string[] exts = "".Split(' ');
+        private static string[] programs = "".Split(' ');
         public static void file(string path)
         {
             string extn = path.Substring(path.LastIndexOf('.'));
@@ -19,6 +19,7 @@ namespace Quicksilver2013
                 if (s == extn) programname = programs[i];
                 i++;
             }
+            if (extn.ToLower() == ".com") { new Quicksilver2013.Executable.COM(path).Execute();return; }
         }
     }
 }

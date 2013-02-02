@@ -36,6 +36,10 @@ namespace Quicksilver2013.Executable
         {
             code = Praxis.IO.File.Read(file);
         }
+        public COM(byte[] src)
+        {
+            code = src;
+        }
         public void Execute()
         {
             /* This might be overwritting something, but since we do not have paging working

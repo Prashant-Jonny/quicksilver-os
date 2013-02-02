@@ -25,7 +25,7 @@ namespace Praxis.IO
 
                     }
                     if(i == paths.Length - 1) {
-                        p.AddEntry((int)sectors, paths[2].GetHashCode(), 0xF0);
+                        p.AddEntry((int)sectors, Quicksilver2013.Impl.String.GetHashCode(paths[2]), 0xF0);
                         WriteFile(paths[2], (int)sectors, content, p);
                     }
                 }
@@ -133,7 +133,7 @@ namespace Praxis.IO
 
                     }
                     if (i == paths.Length - 1) {// && p.doesHaveFile(paths[2].GetHashCode())) {
-                        sectors = p.sectorOfFile(paths[2].GetHashCode());
+                        sectors = p.sectorOfFile(Quicksilver2013.Impl.String.GetHashCode((paths[2])));
                         return ReadFile(paths[2], sectors, p);
                     }
                 }

@@ -74,10 +74,12 @@
     <Compile Include="Executable\pe-exe.cs" />
     <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
+    <Compile Include="Files\exes.cs" />
     <Compile Include="FileXT.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="KeyMap.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="Plugs\String.cs" />
     <Compile Include="Praxis\MemBlocks.cs" />
     <Compile Include="Praxis\Praxis.cs" />
     <Compile Include="Praxis\PraxisIO.cs" />
