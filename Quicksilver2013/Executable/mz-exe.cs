@@ -82,7 +82,7 @@ namespace Quicksilver2013.Executable
         private List<RelocationInfo> symbolsToRelocate = new List<RelocationInfo>();
         public MZ_EXE(string file)
         {
-            code = Praxis.IO.File.Read(file);
+            code = Kernel.vfs.readFile(file);
 
             fixed (byte* ptr = code)
             {

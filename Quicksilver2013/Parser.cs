@@ -21,6 +21,7 @@ namespace Quicksilver2013
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
             //add(new commandBase("cd", new commandBase.command(commanddel.cd)));
             add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
+            add(new commandBase("file", new commandBase.command(commanddel.files)));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -125,6 +126,7 @@ namespace Quicksilver2013
         }
         public static void files(string[] args)
         {
+            if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { new Quicksilver2013.Executable.PE32(Kernel.cd + "/" + args[1]); }
             FileXT.file(args[1]);
         }
         public static void cd(string[] args) {
@@ -147,7 +149,7 @@ namespace Quicksilver2013
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.19\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0.23\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);

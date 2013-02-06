@@ -84,6 +84,7 @@
     <Compile Include="Praxis\Praxis.cs" />
     <Compile Include="Praxis\PraxisIO.cs" />
     <Compile Include="Praxis\Program.cs" />
+    <Compile Include="Praxis\Structure.cs" />
     <Compile Include="Praxis\VDisk.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="VFS.cs" />

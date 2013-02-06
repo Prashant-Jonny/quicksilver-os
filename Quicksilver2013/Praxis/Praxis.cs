@@ -14,8 +14,8 @@ namespace Praxis
             byte[] buffer = new byte[2048];
             var ms = new MemBlocks(buffer);
             ms.Write(Encoding.UTF8.GetBytes(label), 0, 32); //under 32 characters, one word. Used in &Label/
-            ms.Write(BitConverter.GetBytes(0x00000000), 32, 4);
-            ms.Write(new byte[] { 0xF0, 0x00 }, 36, 2);
+            ms.Write(BitConverter.GetBytes(0x00000000), 32, 4); //next sector
+            ms.Write(new byte[] { 0xF0, 0x0F }, 36, 2); //is formatted
             ms.Write(BitConverter.GetBytes(1), 38, 4); //current used sectors
             ms.Write(BitConverter.GetBytes(0), 42, 4); //number of used entrys
             //format for files/directory is byte directory,int hash,int block
