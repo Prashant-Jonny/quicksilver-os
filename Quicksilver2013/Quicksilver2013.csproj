@@ -74,6 +74,7 @@
     <Compile Include="Executable\pe-exe.cs" />
     <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
+    <Compile Include="Filesystem\FAT\Data.cs" />
     <Compile Include="Files\exes.cs" />
     <Compile Include="FileXT.cs" />
     <Compile Include="Kernel.cs" />

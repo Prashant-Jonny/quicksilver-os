@@ -39,7 +39,7 @@ namespace Quicksilver2013
             #region GLNFS
             
             GruntyOS.HAL.ATA.Detect(); // This will detect all ATA devices and add them to the device filesystem
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.22 as of 130202-1133\r\nCopyright (c) 2013");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.26 as of 130206-1133\r\nCopyright (c) 2013");
             Console.Write("Please pick a username: ");
             UserService.user = Console.ReadLine();
             GruntyOS.CurrentUser.Privilages = 0; // This has to be set, 1 = limited 0 = root
@@ -56,13 +56,13 @@ namespace Quicksilver2013
                     FS.Format("system");
                     if (GruntyOS.HAL.GLNFS.isGFS((Cosmos.Hardware.BlockDevice.Partition)GruntyOS.HAL.Devices.dev[i].dev))
                     {
-
                         Console.WriteLine("Drive detected!");
                         ispart = true;
                     }
                     else { Console.Write("Filesystem Label: "); new GruntyOS.HAL.GLNFS((Cosmos.Hardware.BlockDevice.Partition)GruntyOS.HAL.Devices.dev[i].dev).Format(Console.ReadLine()); }
                     GruntyOS.HAL.FileSystem.Root.Mount("/" + FS.DriveLabel, FS); // mount it as root (you can only have on partition mounted as root!!!!
                     if (!ispart) new fdisk().Execute(new string[1]);
+                    GruntyOS.HAL.FileSystem.Root.Seperator = '/';
                     cd = "/" + FS.DriveLabel;
                     var d = new GDOS.Drive();
                     d.Filesystem = FS;
@@ -83,6 +83,7 @@ namespace Quicksilver2013
             Console.Clear();
             //Praxis.IO.File.Create("/system/hello.com", Quicksilver2013.Files.Exes.hello);
             //vfs.saveFile(Quicksilver2013.Files.Exes.hello, cd + "/system/hello.exe", UserService.user);
+            vfs.saveFile(Quicksilver2013.Files.Exes.hello, "/system/hello.exe", UserService.user);
 
 
         }
