@@ -87,6 +87,7 @@
     <Compile Include="Praxis\Program.cs" />
     <Compile Include="Praxis\Structure.cs" />
     <Compile Include="Praxis\VDisk.cs" />
+    <Compile Include="Shells\CTE.cs" />
     <Compile Include="Shells\Prompt.cs" />
     <Compile Include="Shells\Shell.cs" />
     <Compile Include="UserService.cs" />

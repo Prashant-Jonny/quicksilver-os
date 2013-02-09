@@ -19,7 +19,7 @@ namespace Quicksilver2013
         //Praxis.Emulator.Partition part;
         //Praxis.PraxisPartition prax;
         public static string cd = "/";
-        public Shell current;
+        public static Shell current;
         public static GDOS.VirtualFileSystem vfs;
         Cosmos.Hardware.TextScreen ts = new Cosmos.Hardware.TextScreen();
         Cosmos.Hardware.Mouse mouse = new Cosmos.Hardware.Mouse();
