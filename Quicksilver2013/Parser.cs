@@ -19,9 +19,9 @@ namespace Quicksilver2013
             add(new commandBase("mul", new commandBase.command(commanddel.mul)));
             add(new commandBase("div", new commandBase.command(commanddel.div)));
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
-            //add(new commandBase("cd", new commandBase.command(commanddel.cd)));
             add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
             add(new commandBase("file", new commandBase.command(commanddel.files)));
+            add(new commandBase("clear", new commandBase.command(delegate(string[] args) { Console.Clear(); })));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -32,6 +32,8 @@ namespace Quicksilver2013
             commands[7].sethelp("cpuid: Gives info about the cpu\r\nUsage: cpuid");
             //commands[8].sethelp("cd: Changes the current directory\r\nUsage: cd @directory, cd @path");
             commands[8].sethelp("sysinfo: Gives info about the system\r\nUsage: sysinfo");
+            commands[9].sethelp("file: Opens file\r\nUsage: file @filename, file @path");
+            commands[10].sethelp("clear: Clears the console\r\nUsage: clear");
         }
         public static void add(commandBase com) {
             commands[icommand] = com;

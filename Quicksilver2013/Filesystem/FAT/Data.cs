@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Quicksilver2013.Filesystem.FAT
 {
-    class Data
+    unsafe class Data
     {
         struct fat32_bootsector
         {
@@ -29,10 +29,6 @@ namespace Quicksilver2013.Filesystem.FAT
             //extended fat12 and fat16 stuff
             public byte bios_drive_num;
             public byte reserved1;
-            public byte boot_signature;
-            public uint volume_id;
-            public fixed byte volume_label[11];
-            public fixed byte fat_type_label[8];
             //extended fat32 stuff
             public uint table_size_32;
             public ushort extended_flags;
