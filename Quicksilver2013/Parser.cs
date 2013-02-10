@@ -130,7 +130,7 @@ namespace Quicksilver2013
         }
         public static void files(string[] args)
         {
-            if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { new Quicksilver2013.Executable.PE32(Kernel.cd + "/" + args[1]); }
+            if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { /*new Quicksilver2013.Executable.PE32(Kernel.cd + "/" + args[1]);*/ }
             FileXT.file(args[1]);
         }
         public static void cd(string[] args) {
@@ -159,7 +159,7 @@ namespace Quicksilver2013
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.25\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0.30\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);

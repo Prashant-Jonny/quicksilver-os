@@ -73,8 +73,10 @@ namespace Quicksilver2013
             }
             if (!ispart) new fdisk().Execute(new string[1]);
             #endregion
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.29 as of 130209\r\nCopyright (c) 2013");
+            vfs.saveFile(Quicksilver2013.Files.Exes.Example_exe, "/example.exe", "Admin");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.30 as of 130210\r\nCopyright (c) 2013");
             Console.Write("Please pick a username: ");
+            new Quicksilver2013.Executable.PE32("/example.exe");
             UserService.user = Console.ReadLine();
             Parser.Init();
             Console.Clear();

@@ -92,7 +92,6 @@
     <Compile Include="Shells\Shell.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="VFS.cs" />
-    <Compile Include="xl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE.txt" />

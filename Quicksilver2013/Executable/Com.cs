@@ -12,13 +12,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+*/
 
 
 /* No. This does not mean you can run DOS COM files, DOS COM files are 16 bit, this
  * a 32 bit OS. Also DOS COM files rely on the DOS API which can only be emulated
- * in real mode because int21h is used for the keyboard.... 
- */
+ * in real mode because int21h is used for the keyboard.... */
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +67,7 @@ namespace Quicksilver2013.Executable
     [Plug(Target = typeof(Caller))]
     public class CallerPlug : AssemblerMethod
     {
-        public override void AssembleNew(Cosmos.Assembler.Assembler aAssembler, object aMethodInfo)
+        public override void AssembleNew(object aAssembler, object aMethodInfo)
         {
             new CPUx86.Mov { SourceReg = CPUx86.Registers.EBP, SourceDisplacement = 8, SourceIsIndirect = true, DestinationReg = CPUx86.Registers.EAX };
             new CPUx86.Call { DestinationReg = CPUx86.Registers.EAX };
