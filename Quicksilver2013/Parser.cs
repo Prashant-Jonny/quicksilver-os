@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using x86= Cosmos.Assembler.x86;
 
 namespace Quicksilver2013
 {
@@ -22,6 +23,7 @@ namespace Quicksilver2013
             add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
             add(new commandBase("file", new commandBase.command(commanddel.files)));
             add(new commandBase("clear", new commandBase.command(delegate(string[] args) { Console.Clear(); })));
+            add(new commandBase("qte", new commandBase.command(delegate(string[] args) { Kernel.current = new Shells.QTE(); })));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -144,9 +146,15 @@ namespace Quicksilver2013
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        public static void cpuid(string[] args) {
-            var pi = Quicksilver2013.cpuid.pi;
-            Console.WriteLine(pi.CoreCount + " cores at " + pi.MaxSpeed + " MHz");
+        public unsafe static void cpuid(string[] args) {
+            //var pi = Quicksilver2013.cpuid.pi;
+            //Console.WriteLine(pi.CoreCount + " cores at " + pi.MaxSpeed + " MHz");
+            new Cosmos.Assembler.x86.Push { DestinationReg = x86.Registers.EAX };
+            new Cosmos.Assembler.x86.Mov { DestinationReg = Cosmos.Assembler.x86.Registers.EAX, SourceValue = 0 };
+            new x86.CpuId { };
+            var i = 0U;
+            new x86.Mov { SourceReg = x86.Registers.EAX, DestinationValue = (uint?)(&i) };
+            new x86.Pop { DestinationReg = x86.Registers.EAX };
         }
         public static void help(string[] args)
         {

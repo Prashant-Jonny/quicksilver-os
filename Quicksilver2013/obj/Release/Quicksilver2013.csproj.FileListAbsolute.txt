@@ -38,7 +38,6 @@ C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Hardware.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.IL2CPU.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.IL2CPU.Plugs.dll
-C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.IL2CPU.X86.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.System.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\GLNFSLib.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Kernel.dll
@@ -53,7 +52,6 @@ C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Common.Extensions.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Hardware2.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Sys.FileSystem.dll
-C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\FirebirdSql.Data.FirebirdClient.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Debug.Consts.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\raw.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Cosmos.Assembler.pdb
@@ -85,3 +83,4 @@ C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\raw.pd
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver2013.csprojResolveAssemblyReference.cache
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.dll
 C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.pdb
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\bin\Release\Mosa.Utility.IsoImage.dll

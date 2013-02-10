@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Quicksilver2013.Shells
 {
-    class CTE : Shell
+    class QTE : Shell
     {
         public int PosX = 0, PosY = 0;
         public string text;
@@ -14,9 +14,31 @@ namespace Quicksilver2013.Shells
         void ScrollDown() { PosY++; textScreen.ScrollDown(); }
         void ScrollUp() { PosY--; textScreen.ScrollUp(); }
         void exit() { Kernel.current = new Prompt(); }
-        public CTE() { text = ""; }
-        public CTE(string path) { try {/* text = Kernel.vfs.readFile(path);*/ } catch { } }
-        public void loop() { loop(); }
+        public QTE() { text = ""; Console.Clear(); }
+        public QTE(string path) { try {/* text = Kernel.vfs.readFile(path);*/ } catch { } }
+        public void GetChar(ConsoleKey key, char c)
+        {
+            switch (key)
+            {
+                case ConsoleKey.Backspace:
+                    break;
+                case ConsoleKey.UpArrow:
+                    break;
+                case ConsoleKey.DownArrow:
+                    break;
+                case ConsoleKey.LeftArrow:
+                    break;
+                case ConsoleKey.RightArrow:
+                    break;
+                default:
+                    textScreen[PosX, PosY] = c;
+                    PosX++;
+                    if (PosX >= 80) {
+                        PosY++;
+                    }
+                    break;
+            }
+        }
         public override void Run() { }
     }
     public class ATS : Cosmos.Hardware.Device
@@ -125,6 +147,7 @@ namespace Quicksilver2013.Shells
                 if (xReleased) {
                     xScanCode = (byte)(xScanCode ^ 0x80);
                 }
+                if (Kernel.current is QTE) ((QTE)Kernel.current).GetChar(ConsoleKey.A, 'A');
                 mHandleKeyboardKey(xScanCode, xReleased);
             }
         }
@@ -174,10 +197,6 @@ namespace Quicksilver2013.Shells
                         break;
                     }
                 default: {
-                        if ((mCtrlState) && (mAltState) && (xTheScancode == 0x53)) {
-                            Console.WriteLine("Detected Ctrl-Alt-Delete! Rebooting System...");
-                            Cosmos.Core.Global.CPU.Reboot();
-                        }
                         if (mShiftState) {
                             xTheScancode = xTheScancode << 16;
                         }

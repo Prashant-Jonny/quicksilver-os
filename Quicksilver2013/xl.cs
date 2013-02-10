@@ -49,7 +49,7 @@ namespace Quicksilver2013
         [Plug(Target = typeof(Caller))]
         public class CallerPlug : AssemblerMethod
         {
-            public override void AssembleNew(object aAssembler, object aMethodInfo)
+            public override void AssembleNew(Cosmos.Assembler.Assembler aAssembler, object aMethodInfo)
             {
                 new CPUAll.Comment("NoobBinaryLoader. (C) NoobOS 2013. Licensed under the GNU GPL where applicable.");
                 new CPUx86.Mov { SourceReg = CPUx86.Registers.EBP, SourceDisplacement = 8, SourceIsIndirect = true, DestinationReg = CPUx86.Registers.EAX };
