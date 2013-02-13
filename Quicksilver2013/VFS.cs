@@ -87,7 +87,7 @@ namespace GDOS
         }
         public override void makeDir(string name, string owner)
         {
-            string RealPath = name.Substring(2);
+            string RealPath = name.Substring(0);
             getDrive(name).makeDir(RealPath, owner);
         }
         public override void Move(string s1, string s2)

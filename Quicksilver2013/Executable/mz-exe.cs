@@ -82,7 +82,7 @@ namespace Quicksilver2013.Executable
         private List<RelocationInfo> symbolsToRelocate = new List<RelocationInfo>();
         public MZ_EXE(string file)
         {
-            code = Kernel.vfs.readFile(file);
+            code = Kernel.fs.readFile(file);
 
             fixed (byte* ptr = code)
             {

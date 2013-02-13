@@ -34,7 +34,7 @@ namespace Quicksilver2013.Executable
         private byte[] code;
         public COM(string file)
         {
-            code = Kernel.vfs.readFile(file);
+            code = Kernel.fs.readFile(file);
         }
         public COM(byte[] src)
         {
