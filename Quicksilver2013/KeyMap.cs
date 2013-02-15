@@ -1,11 +1,11 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Quicksilver2013
 {
-    class KeyMap
+    /*class KeyMap
     {
         int bits = 7;
         string name;
@@ -20,6 +20,24 @@ namespace Quicksilver2013
             }
             return var0;
         }
+    }*/
+    class ASCII
+    {
+        static List<KeyMap> keys = new List<KeyMap> { new KeyMap(0x20, ' '), new KeyMap(0x21, '!'), new KeyMap(0x22, '"'), new KeyMap(0x23, '#'), new KeyMap(0x24, '$') };
+        public static string GetString(byte[] input) {
+            foreach(byte b in input) {
+                foreach (KeyMap key in keys)
+                {
+                    if (key.b == b) { yield return key.c; break; }
+                }
+            }
+        }
+    }
+    class KeyMap {
+        public byte b;
+        public char c;
+        public KeyMap(byte par0, char par1) {
+            b = par0; c = par1;
+        }
     }
 }
-*/

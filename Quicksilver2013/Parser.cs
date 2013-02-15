@@ -24,6 +24,8 @@ namespace Quicksilver2013
             add(new commandBase("file", new commandBase.command(commanddel.files)));
             add(new commandBase("clear", new commandBase.command(delegate(string[] args) { Console.Clear(); })));
             add(new commandBase("qte", new commandBase.command(delegate(string[] args) { Kernel.current = new Shells.QTE(); })));
+            add(new commandBase("fdisk", new commandBase.command(commanddel.fdisk)));
+            add(new commandBase("mkfs", new commandBase.command(delegate(string[] args) {  })));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -36,6 +38,8 @@ namespace Quicksilver2013
             commands[8].sethelp("sysinfo: Gives info about the system\r\nUsage: sysinfo");
             commands[9].sethelp("file: Opens file\r\nUsage: file @filename, file @path");
             commands[10].sethelp("clear: Clears the console\r\nUsage: clear");
+            commands[11].sethelp("fdisk: Makes partitions\r\nUsage: fdisk");
+            commands[13].sethelp("mkfs: Formats partition\r\nUsage: mkfs @disk @label @filesystem");
         }
         public static void add(commandBase com) {
             commands[icommand] = com;
@@ -133,6 +137,10 @@ namespace Quicksilver2013
             if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { /*new Quicksilver2013.Executable.PE32(Kernel.cd + "/" + args[1]);*/ }
             FileXT.file(args[1]);
         }
+        public static void fdisk(string[] args)
+        {
+            new fdisk().Execute(args);
+        }
         public static void cd(string[] args) {
             try
             {
@@ -153,13 +161,14 @@ namespace Quicksilver2013
             new Cosmos.Assembler.x86.Mov { DestinationReg = Cosmos.Assembler.x86.Registers.EAX, SourceValue = 0 };
             new x86.CpuId { };
             var i = 0U;
-            new x86.Mov { SourceReg = x86.Registers.EAX, DestinationValue = (uint?)(&i) };
+            //new x86.Mov { SourceReg = x86.Registers.EAX, DestinationValue = (uint?)(&i) };
             new x86.Pop { DestinationReg = x86.Registers.EAX };
+            Console.Write(i);
         }
         public static void help(string[] args)
         {
             if (args.Length == 1) {
-                Console.WriteLine("Quicksilver OS Alpha 1.0.0.30\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
+                Console.WriteLine("Quicksilver OS Alpha 1.0.0\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {
                 string help = Parser.getCommandHelp(args[1]);

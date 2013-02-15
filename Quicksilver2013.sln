@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quicksilver2013", "Quicksilver2013\Quicksilver2013.csproj", "{FABA7552-2242-413F-8C05-EA206B057F55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quicksilver", "Quicksilver2013\Quicksilver.csproj", "{FABA7552-2242-413F-8C05-EA206B057F55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
