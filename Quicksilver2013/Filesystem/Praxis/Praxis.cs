@@ -50,6 +50,9 @@ namespace Quicksilver.Filesystem.Praxis
                 writer.Write16(0xF00F); //if 0xF00F then drive is formatted
                 writer.Write64(0x0000); //Used clusters
                 writer.Write64(0x0000); //Used entries
+                writer.Write16(0x0001); //Major version
+                writer.Write16(0x0000); //Minor version
+                writer.Write32(0x0000); //Bug fixes
                 writer.Write64(0x646E454878617250); //UTF8 for PraxHEnd
             }
         }

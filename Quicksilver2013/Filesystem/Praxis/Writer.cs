@@ -24,6 +24,16 @@ namespace Quicksilver.Filesystem.Praxis
             *((ushort*)ptr) = *((ushort*)s);
             ptr += 4;
         }
+        public void Write8(byte b) {
+            *((byte*)ptr) = *((byte*)b);
+            ptr += 4;
+        }
+        public void Write(byte[] par0) {
+            fixed(byte* ptra = par0) {
+                *((byte*)ptr) = *(ptra);
+                ptr += par0.Length;
+            }
+        }
         public void Advance(uint length) {
             ptr += length;
         }
