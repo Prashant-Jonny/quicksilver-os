@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Quicksilver2013.Executable
+namespace Quicksilver.Executable
 {
     public unsafe class PE32
     {

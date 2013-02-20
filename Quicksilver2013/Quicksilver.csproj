@@ -8,7 +8,7 @@
     <ProjectGuid>{FABA7552-2242-413F-8C05-EA206B057F55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quicksilver2013</RootNamespace>
+    <RootNamespace>Quicksilver</RootNamespace>
     <AssemblyName>Quicksilver_OS</AssemblyName>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -75,6 +75,8 @@
     <Compile Include="fdisk.cs" />
     <Compile Include="filesystem.cs" />
     <Compile Include="Filesystem\FAT\Data.cs" />
+    <Compile Include="Filesystem\Praxis\IO\File.cs" />
+    <Compile Include="Filesystem\Praxis\Mount.cs" />
     <Compile Include="Filesystem\Praxis\Praxis.cs" />
     <Compile Include="Filesystem\Praxis\Writer.cs" />
     <Compile Include="Files\exes.cs" />

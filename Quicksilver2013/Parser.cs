@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using x86= Cosmos.Assembler.x86;
 
-namespace Quicksilver2013
+namespace Quicksilver
 {
     static class Parser
     {
@@ -134,7 +134,7 @@ namespace Quicksilver2013
         }
         public static void files(string[] args)
         {
-            if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { /*new Quicksilver2013.Executable.PE32(Kernel.cd + "/" + args[1]);*/ }
+            if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { /*new Quicksilver.Executable.PE32(Kernel.cd + "/" + args[1]);*/ }
             FileXT.file(args[1]);
         }
         public static void fdisk(string[] args)
@@ -155,7 +155,7 @@ namespace Quicksilver2013
             }
         }
         public unsafe static void cpuid(string[] args) {
-            //var pi = Quicksilver2013.cpuid.pi;
+            //var pi = Quicksilver.cpuid.pi;
             //Console.WriteLine(pi.CoreCount + " cores at " + pi.MaxSpeed + " MHz");
             new Cosmos.Assembler.x86.Push { DestinationReg = x86.Registers.EAX };
             new Cosmos.Assembler.x86.Mov { DestinationReg = Cosmos.Assembler.x86.Registers.EAX, SourceValue = 0 };

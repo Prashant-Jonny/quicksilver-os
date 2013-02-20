@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Quicksilver2013.Shells
+namespace Quicksilver.Shells
 {
     public class Prompt : Shell
     {

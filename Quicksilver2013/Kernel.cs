@@ -4,9 +4,9 @@ using System.Text;
 using Sys = Cosmos.System;
 using x86 = Cosmos.Assembler.x86;
 using SMBIOS = Cosmos.Hardware.SMBIOS;
-using Quicksilver2013.Shells;
+using Quicksilver.Shells;
 
-namespace Quicksilver2013
+namespace Quicksilver
 {
     public class Kernel : Sys.Kernel
     {
@@ -67,24 +67,25 @@ namespace Quicksilver2013
                 string[] parts = s.Split(':');
                 Console.Write("Please enter your password, " + parts[0] + ": ");
                 string atpw = Console.ReadLine();
-                if (atpw == ASCII.GetString(Quicksilver2013.Obfuscation.RandomObfuscator.decrypt(pswd, int.Parse(atpw))))
+                if (atpw == ASCII.GetString(Quicksilver.Obfuscation.RandomObfuscator.decrypt(pswd, int.Parse(atpw))))
                 {
                     UserService.user = parts[0];
                     cd = parts[2];
                 }
-            else
-            {
-                Console.Write("Please pick a username and Password\r\nUsername: ");
-                UserService.user = Console.ReadLine();
-                Console.Write("Password: ");
-                string password = Console.ReadLine();
-                GruntyOS.IO.File.Save("/root/users.sys", UserService.user + ":/:/home/" + UserService.user + ":ROOT");
-                Console.WriteLine("Account " + UserService.user + " has been created. Press a key to continue.");
-                Console.Read();
+                else
+                {
+                    Console.Write("Please pick a username and Password\r\nUsername: ");
+                    UserService.user = Console.ReadLine();
+                    Console.Write("Password: ");
+                    string password = Console.ReadLine();
+                    GruntyOS.IO.File.Save("/root/users.sys", UserService.user + ":/:/home/" + UserService.user + ":ROOT");
+                    Console.WriteLine("Account " + UserService.user + " has been created. Press a key to continue.");
+                    Console.Read();
+                }
+                Parser.Init();
+                Console.Clear();
+                current = new Prompt();
             }
-            Parser.Init();
-            Console.Clear();
-            current = new Prompt();
         }
         protected override void Run()
         {

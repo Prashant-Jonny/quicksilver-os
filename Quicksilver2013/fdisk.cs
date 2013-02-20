@@ -25,7 +25,7 @@ using GruntyOS.HAL;
 using Cosmos.Hardware.BlockDevice;
 
 
-namespace Quicksilver2013
+namespace Quicksilver
 {
     class fdisk
     {

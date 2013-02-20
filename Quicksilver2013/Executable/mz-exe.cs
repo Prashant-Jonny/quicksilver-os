@@ -27,7 +27,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using Cosmos.IL2CPU.Plugs;
 using CPUx86 = Cosmos.Assembler.x86;
-namespace Quicksilver2013.Executable
+namespace Quicksilver.Executable
 {
 
     [StructLayout(LayoutKind.Explicit, Pack = 1)]

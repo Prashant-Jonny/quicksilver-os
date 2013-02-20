@@ -1,0 +1,3 @@
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver.csprojResolveAssemblyReference.cache
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.dll
+C:\Users\John\Documents\GitHub\quicksilver-os\Quicksilver2013\obj\Release\Quicksilver_OS.pdb

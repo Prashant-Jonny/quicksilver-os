@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Quicksilver2013
+namespace Quicksilver
 {
     class FileXT
     {
@@ -19,7 +19,7 @@ namespace Quicksilver2013
                 if (s == extn) programname = programs[i];
                 i++;
             }
-            if (extn.ToLower() == ".com") { /*new Quicksilver2013.Executable.COM(path).Execute();return;*/ }
+            if (extn.ToLower() == ".com") { /*new Quicksilver.Executable.COM(path).Execute();return;*/ }
         }
     }
 }
