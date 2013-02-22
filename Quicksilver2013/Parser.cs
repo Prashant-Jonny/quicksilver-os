@@ -22,10 +22,10 @@ namespace Quicksilver
             add(new commandBase("cpuid", new commandBase.command(commanddel.cpuid)));
             add(new commandBase("sysinfo", new commandBase.command(commanddel.meminfo)));
             add(new commandBase("file", new commandBase.command(commanddel.files)));
-            add(new commandBase("clear", new commandBase.command(delegate(string[] args) { Console.Clear(); })));
-            add(new commandBase("qte", new commandBase.command(delegate(string[] args) { Kernel.current = new Shells.QTE(); })));
+            add(new commandBase("clear", new commandBase.command(delegate(List<string> args) { Console.Clear(); })));
+            add(new commandBase("qte", new commandBase.command(delegate(List<string> args) { Kernel.current = new Shells.QTE(); })));
             add(new commandBase("fdisk", new commandBase.command(commanddel.fdisk)));
-            add(new commandBase("mkfs", new commandBase.command(delegate(string[] args) {  })));
+            add(new commandBase("mkfs", new commandBase.command(delegate(List<string> args) {  })));
             commands[0].sethelp("echo: Prints a string to the console\r\nUsage: echo @s");
             commands[1].sethelp("try: Catches errors in commands\r\nUsage: try @command @args");
             commands[2].sethelp("add: Adds two numbers together\r\nUsage: add @n @n");
@@ -39,7 +39,7 @@ namespace Quicksilver
             commands[9].sethelp("file: Opens file\r\nUsage: file @filename, file @path");
             commands[10].sethelp("clear: Clears the console\r\nUsage: clear");
             commands[11].sethelp("fdisk: Makes partitions\r\nUsage: fdisk");
-            commands[13].sethelp("mkfs: Formats partition\r\nUsage: mkfs @disk @label @filesystem");
+            commands[12].sethelp("mkfs: Formats partition\r\nUsage: mkfs @disk @label @filesystem");
         }
         public static void add(commandBase com) {
             commands[icommand] = com;
@@ -47,9 +47,10 @@ namespace Quicksilver
         }
         public static void Parse(string text) {
             bool didfind = false;
+            List<string> tokens = Tokenizer.getTokens(text);
             for (int i = 0; i < commands.Length; i++ )
             {
-                if (text.Split(' ')[0].ToLower() == commands[i].text)
+                if (tokens[0].ToLower() == commands[i].text)
                 {
                     commands[i].execute(text);
                     didfind = true;
@@ -87,7 +88,7 @@ namespace Quicksilver
             text = _text;
         }
         public void execute(string s){
-            executec(s.Split(' '));
+            executec(Tokenizer.getTokens(s));
         }
         public string gethelp() {
             return _help;
@@ -97,51 +98,51 @@ namespace Quicksilver
         }
         public command executec;
         public string text;
-        public delegate void command(string[] args);
+        public delegate void command(List<string> args);
     }
     public static class commanddel {
-        public static void nothing(string[] args) {
+        public static void nothing(List<string> args) {
         }
-        public static void echo(string[] args) {
+        public static void echo(List<string> args) {
             Console.WriteLine(args[1]);
         }
-        public static void tryc(string[] args) {
+        public static void tryc(List<string> args) {
             string s = "";
-            for(int i = 1; i < args.Length; i++) {
+            for(int i = 1; i < args.Count; i++) {
                 s += args[i] + " ";
             }
             try { Parser.Parse(s); }
             catch { Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine("There was an error with the command " + args[1]); Console.ForegroundColor = ConsoleColor.White; }
         }
-        public static void add(string[] args) {
+        public static void add(List<string> args) {
             Console.WriteLine((int.Parse(args[1]) + int.Parse(args[2])));
         }
-        public static void sub(string[] args)
+        public static void sub(List<string> args)
         {
             Console.WriteLine((int.Parse(args[1]) - int.Parse(args[2])));
         }
-        public static void mul(string[] args)
+        public static void mul(List<string> args)
         {
             Console.WriteLine((int.Parse(args[1]) * int.Parse(args[2])));
         }
-        public static void div(string[] args)
+        public static void div(List<string> args)
         {
             Console.WriteLine((int.Parse(args[1]) / int.Parse(args[2])));
         }
-        public static void meminfo(string[] args)
+        public static void meminfo(List<string> args)
         {
             Console.WriteLine((Cosmos.Core.CPU.GetAmountOfRAM() * 1024 * 1024) + " bytes of RAM");
         }
-        public static void files(string[] args)
+        public static void files(List<string> args)
         {
             if (args[1].Substring(args[1].LastIndexOf('.')) == "exe") { /*new Quicksilver.Executable.PE32(Kernel.cd + "/" + args[1]);*/ }
             FileXT.file(args[1]);
         }
-        public static void fdisk(string[] args)
+        public static void fdisk(List<string> args)
         {
-            new fdisk().Execute(args);
+            new fdisk().Execute(new string[]{""});
         }
-        public static void cd(string[] args) {
+        public static void cd(List<string> args) {
             try
             {
                 //if (args[1][0] == '/') Kernel.cd = args[1];
@@ -154,7 +155,7 @@ namespace Quicksilver
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        public unsafe static void cpuid(string[] args) {
+        public unsafe static void cpuid(List<string> args) {
             //var pi = Quicksilver.cpuid.pi;
             //Console.WriteLine(pi.CoreCount + " cores at " + pi.MaxSpeed + " MHz");
             new Cosmos.Assembler.x86.Push { DestinationReg = x86.Registers.EAX };
@@ -165,9 +166,9 @@ namespace Quicksilver
             new x86.Pop { DestinationReg = x86.Registers.EAX };
             Console.Write(i);
         }
-        public static void help(string[] args)
+        public static void help(List<string> args)
         {
-            if (args.Length == 1) {
+            if (args.Count == 1) {
                 Console.WriteLine("Quicksilver OS Alpha 1.0.0\r\nCommands: echo, try, add, sub, mul, div, help, cpuid, cd.");
             }
             else {

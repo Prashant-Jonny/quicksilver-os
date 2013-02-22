@@ -154,7 +154,7 @@ namespace Praxis
         public static void Add(PraxisPartition part)
         {
             table[index] = part;
-            hashes[index] = Quicksilver.Impl.String.GetHashCode(part.Label());
+            //hashes[index] = Quicksilver.Impl.String.GetHashCode(part.Label());
             index++;
         }
         public static PraxisPartition Get(string label)

@@ -10,7 +10,7 @@ namespace Quicksilver.Filesystem.Praxis.IO
         public static void Create(string path, byte[] content)
         {
             string[] paths = path.Split('/');
-            Praxis p = Mount.Get(paths[1]);
+            Praxis p = MountService.Get(paths[1]);
             if (p != null) {
                 ulong sectors = p.nextAvailableSector;
                 for (int i = 2; i < paths.Length; i++) {
@@ -19,7 +19,7 @@ namespace Quicksilver.Filesystem.Praxis.IO
                     }
                     if (i == paths.Length - 1) {
                         p.writeEntry(0xF0, Quicksilver.Impl.String.GetHashCode(paths[2]), sectors);
-                        WriteFile(paths[2], (int)sectors, content, p);
+                        WriteFile(paths[2], sectors, content, p);
                     }
                 }
             }

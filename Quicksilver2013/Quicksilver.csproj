@@ -78,6 +78,7 @@
     <Compile Include="Filesystem\Praxis\IO\File.cs" />
     <Compile Include="Filesystem\Praxis\Mount.cs" />
     <Compile Include="Filesystem\Praxis\Praxis.cs" />
+    <Compile Include="Tokenizer.cs" />
     <Compile Include="Filesystem\Praxis\Writer.cs" />
     <Compile Include="Files\exes.cs" />
     <Compile Include="FileXT.cs" />

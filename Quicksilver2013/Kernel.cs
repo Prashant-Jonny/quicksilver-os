@@ -58,34 +58,34 @@ namespace Quicksilver
             }
             if (!ispart) new fdisk().Execute(new string[1]);
             #endregion
-            fs.makeDir("/root", "Admin");
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.31 as of 130211\r\nCopyright (c) 2013");
-            byte[] pswd = fs.readFile("/root/password.sys");
-            if (fs.ListFiles("/root").Contains("users.sys"))
-            {
-                String s = GruntyOS.IO.File.Open("/root/users.sys");
-                string[] parts = s.Split(':');
-                Console.Write("Please enter your password, " + parts[0] + ": ");
-                string atpw = Console.ReadLine();
-                if (atpw == ASCII.GetString(Quicksilver.Obfuscation.RandomObfuscator.decrypt(pswd, int.Parse(atpw))))
-                {
-                    UserService.user = parts[0];
-                    cd = parts[2];
-                }
-                else
-                {
-                    Console.Write("Please pick a username and Password\r\nUsername: ");
-                    UserService.user = Console.ReadLine();
-                    Console.Write("Password: ");
-                    string password = Console.ReadLine();
-                    GruntyOS.IO.File.Save("/root/users.sys", UserService.user + ":/:/home/" + UserService.user + ":ROOT");
-                    Console.WriteLine("Account " + UserService.user + " has been created. Press a key to continue.");
-                    Console.Read();
-                }
+                //fs.makeDir("/root", "Admin");
+                //Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.42 as of 130242\r\nCopyright (c) 2013");
+                //byte[] pswd = fs.readFile("/root/password.sys");
+                //if (fs.ListFiles("/root").Contains("users.sys"))
+                //{
+                //String s = GruntyOS.IO.File.Open("/root/users.sys");
+                //string[] parts = s.Split(':');
+                //Console.Write("Please enter your password, " + parts[0] + ": ");
+                //string atpw = Console.ReadLine();
+                //if (true)//atpw == ASCII.GetString(Quicksilver.Obfuscation.RandomObfuscator.decrypt(pswd, int.Parse(atpw))))
+                //{
+                    UserService.user = "root";
+                    cd = "/home";
+                //}
+                //else
+                //{
+                //    Console.Write("Please pick a username and Password\r\nUsername: ");
+                //    UserService.user = Console.ReadLine();
+                //    Console.Write("Password: ");
+                //    string password = Console.ReadLine();
+                //    GruntyOS.IO.File.Save("/root/users.sys", UserService.user + ":/:/home/" + UserService.user + ":ROOT");
+                //    Console.WriteLine("Account " + UserService.user + " has been created. Press a key to continue.");
+                //    Console.Read();
+                //}
                 Parser.Init();
                 Console.Clear();
                 current = new Prompt();
-            }
+            
         }
         protected override void Run()
         {
