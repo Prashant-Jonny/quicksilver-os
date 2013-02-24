@@ -59,9 +59,9 @@ namespace Quicksilver
             if (!ispart) new fdisk().Execute(new string[1]);
             #endregion
             fs.makeDir("/root", "Admin");
-            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.44 as of 130224\r\nCopyright (c) 2013");
+            Console.WriteLine("Welcome to Quicksilver OS Alpha 1.0.0.44 as of 24.02.13\r\nCopyright (c) 2013");
 
-            if (false)//fs.ListFiles("/root").Contains("users.sys"))
+            if (fs.ListFiles("/root").Contains("users.sys"))
             {
                 string pswd = GruntyOS.IO.File.Open("/root/password.sys");
                 string s = GruntyOS.IO.File.Open("/root/users.sys");
